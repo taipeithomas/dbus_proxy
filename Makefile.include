@@ -1,0 +1,32 @@
+# This "include" file defines the details of how to build Usage Session 
+# Integration Adapter (sim) module
+# 
+# According to GNU convention, the following protocols should be observed
+# 1, use $(srcdir)/ in front of each source file (.cpp, .o, etc.)
+# 2, "install" needs to compile the program first (prerequisite all), 
+#    then "INSTALL" executable/binary files
+# 3, Inside "install" target, use $(INSTALLPROGRAM) and $(INSTALLDATA), 
+# 4, Inside "install" and "uninstall" targets, use $(DESTDIR), $(libdir), 
+#    $(bindir), accordingly
+# 5, list all label names behind ".PHONY" target
+# 6, leave $(CFLAGS) as the last option in $(CXX) command line, 
+#    thus giving other users a chance to override command line settings
+# 7, put '@' before a command so it won't show up in screen
+# 8, put '-' before a command so its possible error won't stop MAKE
+
+dbus_proxy_lib =	$(MODULE_ROOT_DIR)/lib/libdbus_proxy.so
+
+
+AllTargets =		$(dbus_proxy_lib)
+
+all: $(AllTargets)
+
+$(dbus_proxy_lib): $(srcdir)/dbus_proxy.o $(srcdir)/dbus_proxy_utility.o 
+	@mkdir -p $(MODULE_ROOT_DIR)/lib
+	$(CXX) $(LDFLAGS) -shared -o $@ $^
+
+clean:
+	@rm -f $(srcdir)/*.o
+	@rm -f $(AllTargets)
+
+.PHONY: all clean
