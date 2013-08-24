@@ -1,4 +1,4 @@
-# GNU Convention, SHELL variable must be defined, preferably at first line
+# GNU Convention, SHELL variables must be defined, preferably at first line
 SHELL = /bin/bash
 
 # Clean out .SUFFIXES first, then set the supported file type in this build
