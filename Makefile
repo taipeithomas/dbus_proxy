@@ -53,8 +53,8 @@ LDFLAGS += -L. -L/usr/lib/x86_64-linux-gnu/ -L$(MODULE_ROOT_DIR)/lib
 DBUSCFLAGS = $(shell pkg-config --cflags dbus-1)
 DBUSLIBS = $(shell pkg-config --libs dbus-1)
 
-CFLAGS += $(DBUSCFLAGS) -I/usr/include -I/usr/lib -I/usr/local/include -I./3rd/include/dbus
-LDFLAGS += $(DBUSLIBS) -L./3rd/lib/dbus
+CFLAGS += $(DBUSCFLAGS) -I/usr/include -I/usr/lib -I/usr/local/include -I$(MODULE_ROOT_DIR)/3rd/include/
+LDFLAGS += $(DBUSLIBS) -L$(MODULE_ROOT_DIR)/3rd/lib/dbus
 
 # Following are conventional targets to support, each pointing to a 
 # module-specific target, which will be defined in the "include" file.
