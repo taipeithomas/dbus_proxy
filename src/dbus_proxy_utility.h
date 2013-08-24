@@ -8,6 +8,7 @@
 #include <list>
 #include <queue>
 #include <dbus/dbus.h>
+#include <unistd.h>
 
 #include "dbus_proxy.h"
 #include "dbus_proxy_private.h"
